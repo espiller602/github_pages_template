@@ -137,7 +137,7 @@ corr = df['Players_in_Top5'].corr(df['INT'])
 print("Correlation between team INT and players in top 5:", corr)
 ```
 
-From a surface-level EDA, it does not appear that there is a strong relationship between having a player who tanks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:
+From a surface-level EDA, it does not appear that there is a strong relationship between having a player who ranks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:
 
 
 
@@ -153,12 +153,24 @@ Offenses also run complex play schemes. Players on the offense, especially the q
 
 
 
-### pash rush
+### pass rush
 
-The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offesnive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes. 
+The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offensive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes. 
 
 
 
 ## conclusion
 
-You noticed we didn't have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables. 
+You noticed we didn't have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables.
+Information for player sack leaders can be found here: 
+- [Individual Sack Leaders for 2020](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2020/seasontype/2/table/defensive/sort/sacks/dir/desc)
+- [Individual Sack Leaders for 2021](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2021/seasontype/2/table/defensive/sort/sacks/dir/desc)
+- [Individual Sack Leaders for 2022](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2022/seasontype/2/table/defensive/sort/sacks/dir/desc)
+- [Individual Sack Leaders for 2023](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2023/seasontype/2/table/defensive/sort/sacks/dir/desc)
+- [Individual Sack Leaders for 2024](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2024/seasontype/2/table/defensive/sort/sacks/dir/desc)
+Information for team sack leaders can be found here:
+- [Team Sack Leaders for 2020](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2020/seasontype/2/table/passing/sort/sacks/dir/desc)  
+- [Team Sack Leaders for 2021](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2021/seasontype/2/table/passing/sort/sacks/dir/desc)  
+- [Team Sack Leaders for 2022](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2022/seasontype/2/table/passing/sort/sacks/dir/desc)  
+- [Team Sack Leaders for 2023](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2023/seasontype/2/table/passing/sort/sacks/dir/desc)  
+- [Team Sack Leaders for 2024](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2024/seasontype/2/table/passing/sort/sacks/dir/desc)

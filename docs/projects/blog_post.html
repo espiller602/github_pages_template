@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#scheme" id="toc-scheme" class="nav-link" data-scroll-target="#scheme">Scheme</a></li>
   <li><a href="#mistakes-on-offense" id="toc-mistakes-on-offense" class="nav-link" data-scroll-target="#mistakes-on-offense">Mistakes on offense</a></li>
-  <li><a href="#pash-rush" id="toc-pash-rush" class="nav-link" data-scroll-target="#pash-rush">pash rush</a></li>
+  <li><a href="#pass-rush" id="toc-pass-rush" class="nav-link" data-scroll-target="#pass-rush">pass rush</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">conclusion</a></li>
   </ul>
@@ -500,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<div id="15975d72" class="cell" data-message="false" data-execution_count="1">
+<div id="865ba417" class="cell" data-message="false" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -626,7 +626,7 @@ Year
 <pre><code>Correlation between team INT and players in top 5: -0.13325602164253247</code></pre>
 </div>
 </div>
-<p>From a surface-level EDA, it does not appear that there is a strong relationship between having a player who tanks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:</p>
+<p>From a surface-level EDA, it does not appear that there is a strong relationship between having a player who ranks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:</p>
 <section id="scheme" class="level3">
 <h3 class="anchored" data-anchor-id="scheme">Scheme</h3>
 <p>There are a variety of defensive coverages that modern NFL defenses use. These coverages dictate what players on the offense and defensive players are responsible for guarding, what areas of the field defensive players are responsible for covering/protecting, and how to react with other players on the defense to what plays the offense runs. A good scheme can create opportunities for interceptions even without ballhawks or elite coverage defenders.</p>
@@ -635,14 +635,18 @@ Year
 <h3 class="anchored" data-anchor-id="mistakes-on-offense">Mistakes on offense</h3>
 <p>Offenses also run complex play schemes. Players on the offense, especially the quarterback, must react to and try and read what schemes defenses are using before the play to try to move the ball downfield. ball catchers must run specific routes, and good catches depend on accurate throws from the quarterback as well as the receivers being at the right place in on the field at the right time. If the receiver makes a mistake and is not where the quarterback expects him to be, it’s easy to quickly throw the ball to a defensive back for an easy interception. If a ball is tipped in the air by another player or the receiver bobbles the ball or drops it, that creates opportunities for interceptions. Interceptions from tipped or bobbled balls are more a product of offensive errors, making them more random.</p>
 </section>
-<section id="pash-rush" class="level3">
-<h3 class="anchored" data-anchor-id="pash-rush">pash rush</h3>
-<p>The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offesnive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes.</p>
+<section id="pass-rush" class="level3">
+<h3 class="anchored" data-anchor-id="pass-rush">pass rush</h3>
+<p>The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offensive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes.</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">conclusion</h2>
-<p>You noticed we didn’t have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables.</p>
+<p>You noticed we didn’t have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables. Information for player sack leaders can be found here: - <a href="https://www.espn.ph/nfl/stats/player/_/view/defense/season/2020/seasontype/2/table/defensive/sort/sacks/dir/desc">Individual Sack Leaders for 2020</a> - <a href="https://www.espn.ph/nfl/stats/player/_/view/defense/season/2021/seasontype/2/table/defensive/sort/sacks/dir/desc">Individual Sack Leaders for 2021</a> - <a href="https://www.espn.ph/nfl/stats/player/_/view/defense/season/2022/seasontype/2/table/defensive/sort/sacks/dir/desc">Individual Sack Leaders for 2022</a> - <a href="https://www.espn.ph/nfl/stats/player/_/view/defense/season/2023/seasontype/2/table/defensive/sort/sacks/dir/desc">Individual Sack Leaders for 2023</a> - <a href="https://www.espn.ph/nfl/stats/player/_/view/defense/season/2024/seasontype/2/table/defensive/sort/sacks/dir/desc">Individual Sack Leaders for 2024</a> Information for team sack leaders can be found here: - <a href="https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2020/seasontype/2/table/passing/sort/sacks/dir/desc">Team Sack Leaders for 2020</a><br>
+- <a href="https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2021/seasontype/2/table/passing/sort/sacks/dir/desc">Team Sack Leaders for 2021</a><br>
+- <a href="https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2022/seasontype/2/table/passing/sort/sacks/dir/desc">Team Sack Leaders for 2022</a><br>
+- <a href="https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2023/seasontype/2/table/passing/sort/sacks/dir/desc">Team Sack Leaders for 2023</a><br>
+- <a href="https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2024/seasontype/2/table/passing/sort/sacks/dir/desc">Team Sack Leaders for 2024</a></p>
 
 
 <!-- -->
@@ -1240,7 +1244,7 @@ Year
 <span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Correlation between team INT and players in top 5:"</span>, corr)</span>
 <span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>From a surface-level EDA, it does not appear that there is a strong relationship between having a player who tanks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:</span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a>From a surface-level EDA, it does not appear that there is a strong relationship between having a player who ranks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:</span>
 <span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a></span>
@@ -1256,15 +1260,27 @@ Year
 <span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### pash rush</span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### pass rush</span></span>
 <span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offesnive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes. </span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offensive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes. </span>
 <span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## conclusion</span></span>
 <span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>You noticed we didn't have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables. </span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a>You noticed we didn't have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables.</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>Information for player sack leaders can be found here: </span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Individual Sack Leaders for 2020</span><span class="co">](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2020/seasontype/2/table/defensive/sort/sacks/dir/desc)</span></span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Individual Sack Leaders for 2021</span><span class="co">](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2021/seasontype/2/table/defensive/sort/sacks/dir/desc)</span></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Individual Sack Leaders for 2022</span><span class="co">](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2022/seasontype/2/table/defensive/sort/sacks/dir/desc)</span></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Individual Sack Leaders for 2023</span><span class="co">](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2023/seasontype/2/table/defensive/sort/sacks/dir/desc)</span></span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Individual Sack Leaders for 2024</span><span class="co">](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2024/seasontype/2/table/defensive/sort/sacks/dir/desc)</span></span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>Information for team sack leaders can be found here:</span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Team Sack Leaders for 2020</span><span class="co">](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2020/seasontype/2/table/passing/sort/sacks/dir/desc)</span>  </span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Team Sack Leaders for 2021</span><span class="co">](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2021/seasontype/2/table/passing/sort/sacks/dir/desc)</span>  </span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Team Sack Leaders for 2022</span><span class="co">](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2022/seasontype/2/table/passing/sort/sacks/dir/desc)</span>  </span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Team Sack Leaders for 2023</span><span class="co">](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2023/seasontype/2/table/passing/sort/sacks/dir/desc)</span>  </span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Team Sack Leaders for 2024</span><span class="co">](https://www.espn.com/nfl/stats/team/_/view/defense/stat/passing/season/2024/seasontype/2/table/passing/sort/sacks/dir/desc)</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
