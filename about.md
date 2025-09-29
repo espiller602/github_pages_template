@@ -31,9 +31,9 @@ title: "About Me"
 
 Describe what you hope to achieve through your data science journey:
 
-- Short-term learning objectives
-- Long-term career aspirations
-- Types of problems you want to solve
+- contribute to an industry that makes people's lives better
+- Improve patient outcomes when it comes to managing healthcare costs
+- reduce insurance and hospital ineffiency, maximize patient cost coverage and reduce stress for people with illnesses
 
 ## Contact
 

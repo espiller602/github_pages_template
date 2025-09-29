@@ -1,7 +1,7 @@
 ---
 title: "Chess or Checkers: How does scheme influence interceptions in the NFL?"
 author: "Eli Spiller"
-date: "2025-01-01"
+date: "2025-09-29"
 format:
   html:
     code-fold: true
@@ -10,18 +10,13 @@ execute:
   jupyter: python3
 ---
 
-```{figure} images/rsint.jpg
-width: 400px
-fig-align: center
-```
-
-# Chess or Checkers: How does scheme influence interceptions in the NFL?
+![Richard Sherman’s iconic game-sealing pick](images/rsint.jpg){ width=400px style="display:block; margin:auto;" }
 
 NFL playcalling is an art form. All plays in the NFL are designed carefully and drilled to be executed with meticulous precision. Some of these plays occupy a sacred space in not just the execution but also the mythos of the game: a game-sealing sack, an explosive run play, a laser throw locked onto the glory of a breathtaking win. Few types of plays occupy such a vaunted position in the pantheon of football gameplay like interceptions do. One interception can reverse the momentum of a game, sealing a comeback win. Or it can pull the hopes and dreams of a win out of the air and into the arms of the opposing team. Thus, interceptions are the holy grail of defensive plays, and  NFL teams have been on a decades-long crusade to try to take the ball away as much as they can. Something I have always wondered was how influential having a ball hawk player was in helping a team take the ball away as a whole. In this post, we will go over a quick tutorial on how to do a quick EDA with data from a small sample of seasons, comparing NFL teams that led the league in interceptions and how many players on their team were in the top 5 that season in terms of interception numbers. 
 
 ## Interceptions and Players in Top 5 by Team (2020–2024)
 
-| Year (regular season only) | Team       | total team INT |# of Players in Top 5 for invidual INT |
+| Year (regular season only) | Team | total team INT |# of Players in Top 5 for individual INT |
 |------|------------|-----|------------------|
 | 2024 | Vikings    | 24  | 1 |
 |      | Texans     | 19  | 2 |
@@ -58,6 +53,9 @@ Here are the teams that led the NFL in total interceptions from the 2020 regular
 
 ## Analysis
 ```{python}
+#| echo: true
+#| warning: false
+#| message: false
 
 import pandas as pd
 import matplotlib.pyplot as plt
