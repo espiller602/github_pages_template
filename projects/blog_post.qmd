@@ -162,6 +162,7 @@ The players on the defensive line are trying to sack the quarterback. If players
 ## conclusion
 
 You noticed we didn't have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables.
+
 Information for player sack leaders can be found here: 
 - [Individual Sack Leaders for 2020](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2020/seasontype/2/table/defensive/sort/sacks/dir/desc)
 - [Individual Sack Leaders for 2021](https://www.espn.ph/nfl/stats/player/_/view/defense/season/2021/seasontype/2/table/defensive/sort/sacks/dir/desc)
