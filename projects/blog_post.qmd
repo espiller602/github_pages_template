@@ -6,7 +6,14 @@ format:
   html:
     code-fold: true
     toc: true
+execute:
+  jupyter: python3
 ---
+
+```{figure} images/rsint.jpg
+width: 400px
+fig-align: center
+```
 
 # Chess or Checkers: How does scheme influence interceptions in the NFL?
 
@@ -50,7 +57,7 @@ NFL playcalling is an art form. All plays in the NFL are designed carefully and 
 Here are the teams that led the NFL in total interceptions from the 2020 regular season to the 2024 regular season. For each team, the number of players on the team whose individual interception total ranked in the top 5 of total individual interceptions is also given. The code below will allow us to perform some exploratory data analysis on these numbers . We will create a few graphs to get an understanding of any trends in the data and see correlations between the different variables. 
 
 ## Analysis
-```{python)
+```{python}
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -86,9 +93,6 @@ data = {
 }
 
 df = pd.DataFrame(data)
-```
-
-```{python}
 print(df.groupby('Year').agg({
     'INT': 'mean',
     'Players_in_Top5': 'mean'
