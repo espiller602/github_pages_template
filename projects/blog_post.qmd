@@ -1,0 +1,162 @@
+---
+title: "Chess or Checkers: How does scheme influence interceptions in the NFL?"
+author: "Eli Spiller"
+date: "2025-01-01"
+format:
+  html:
+    code-fold: true
+    toc: true
+---
+
+# Chess or Checkers: How does scheme influence interceptions in the NFL?
+
+NFL playcalling is an art form. All plays in the NFL are designed carefully and drilled to be executed with meticulous precision. Some of these plays occupy a sacred space in not just the execution but also the mythos of the game: a game-sealing sack, an explosive run play, a laser throw locked onto the glory of a breathtaking win. Few types of plays occupy such a vaunted position in the pantheon of football gameplay like interceptions do. One interception can reverse the momentum of a game, sealing a comeback win. Or it can pull the hopes and dreams of a win out of the air and into the arms of the opposing team. Thus, interceptions are the holy grail of defensive plays, and  NFL teams have been on a decades-long crusade to try to take the ball away as much as they can. Something I have always wondered was how influential having a ball hawk player was in helping a team take the ball away as a whole. In this post, we will go over a quick tutorial on how to do a quick EDA with data from a small sample of seasons, comparing NFL teams that led the league in interceptions and how many players on their team were in the top 5 that season in terms of interception numbers. 
+
+## Interceptions and Players in Top 5 by Team (2020–2024)
+
+| Year (regular season only) | Team       | total team INT |# of Players in Top 5 for invidual INT |
+|------|------------|-----|------------------|
+| 2024 | Vikings    | 24  | 1 |
+|      | Texans     | 19  | 2 |
+|      | Steelers   | 17  | 2 |
+|      | Packers    | 17  | 1 |
+|      | Bills      | 16  | 0 |
+|      | Lions      | 16  | 2 |
+| 2023 | Browns     | 23  | 1 |
+|      | Patriots   | 21  | 0 |
+|      | Commanders | 21  | 0 |
+|      | Vikings    | 19  | 0 |
+|      | Bills      | 18  | 1 |
+|      | Raiders    | 18  | 0 |
+| 2022 | Colts      | 20  | 1 |
+|      | Texans     | 19  | 1 |
+|      | Cowboys    | 18  | 1 |
+|      | Cardinals  | 17  | 0 |
+|      | Raiders    | 17  | 0 |
+|      | Commanders | 16  | 1 |
+| 2021 | Panthers   | 21  | 0 |
+|      | Giants     | 20  | 2 |
+|      | Bears      | 20  | 0 |
+|      | Jets       | 20  | 0 |
+|      | Rams       | 18  | 1 |
+|      | Ravens     | 18  | 0 |
+| 2020 | Dolphins   | 18  | 1 |
+|      | Steelers   | 18  | 1 |
+|      | Patriots   | 18  | 1 |
+|      | Saints     | 18  | 0 |
+|      | Chiefs     | 16  | 1 |
+|      | Commanders | 16  | 1 |
+
+Here are the teams that led the NFL in total interceptions from the 2020 regular season to the 2024 regular season. For each team, the number of players on the team whose individual interception total ranked in the top 5 of total individual interceptions is also given. The code below will allow us to perform some exploratory data analysis on these numbers . We will create a few graphs to get an understanding of any trends in the data and see correlations between the different variables. 
+
+## Analysis
+```{python)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    "Year": [
+        2024, 2024, 2024, 2024, 2024, 2024,
+        2023, 2023, 2023, 2023, 2023, 2023,
+        2022, 2022, 2022, 2022, 2022, 2022,
+        2021, 2021, 2021, 2021, 2021, 2021,
+        2020, 2020, 2020, 2020, 2020, 2020
+    ],
+    "Team": [
+        "Vikings","Texans","Steelers","Packers","Bills","Lions",
+        "Browns","Patriots","Commanders","Vikings","Bills","Raiders",
+        "Colts","Texans","Cowboys","Cardinals","Raiders","Commanders",
+        "Panthers","Giants","Bears","Jets","Rams","Ravens",
+        "Dolphins","Steelers","Patriots","Saints","Chiefs","Commanders"
+    ],
+    "INT": [
+        24,19,17,17,16,16,
+        23,21,21,19,18,18,
+        20,19,18,17,17,16,
+        21,20,20,20,18,18,
+        18,18,18,18,16,16
+    ],
+    "Players_in_Top5": [
+        1,2,2,1,0,2,
+        1,0,0,0,1,0,
+        1,1,1,0,0,1,
+        0,2,0,0,1,0,
+        1,1,1,0,1,1
+    ]
+}
+
+df = pd.DataFrame(data)
+```
+
+```{python}
+print(df.groupby('Year').agg({
+    'INT': 'mean',
+    'Players_in_Top5': 'mean'
+}))
+
+# Scatter plot
+plt.figure(figsize=(8,6))
+plt.scatter(df['Players_in_Top5'], df['INT'], color='blue')
+plt.xlabel('Number of Players in Top 5 Interceptions')
+plt.ylabel('Team Interceptions')
+plt.title('Team Interceptions vs. Players in Top 5')
+plt.grid(True)
+plt.show()
+
+
+plt.figure(figsize=(8,5))
+plt.boxplot([df[df['Year']==year]['INT'] for year in sorted(df['Year'].unique())],
+            labels=sorted(df['Year'].unique()))
+plt.xlabel('Year')
+plt.ylabel('INT')
+plt.title('Distribution of INT by Year')
+plt.show()
+
+plt.figure(figsize=(8,5))
+plt.boxplot([df[df['Year']==year]['Players_in_Top5'] for year in sorted(df['Year'].unique())],
+            labels=sorted(df['Year'].unique()))
+plt.xlabel('Year')
+plt.ylabel('Players in Top 5')
+plt.title('Distribution of Players in Top 5 by Year')
+plt.show()
+
+
+
+plt.figure(figsize=(8,5))
+df.boxplot(column='INT', by='Players_in_Top5')
+plt.xlabel('Players in Top 5')
+plt.ylabel('INT')
+plt.title('INT by Number of Players in Top 5')
+plt.suptitle('')  # remove default subplot title
+plt.show()
+
+# Correlation
+corr = df['Players_in_Top5'].corr(df['INT'])
+print("Correlation between team INT and players in top 5:", corr)
+```
+
+From a surface-level EDA, it does not appear that there is a strong relationship between having a player who tanks top 5 in interceptions and total team interceptions. While this may seem surprising, there are several possible reasons for this:
+
+
+
+### Scheme
+
+There are a variety of defensive coverages that modern NFL defenses use. These coverages dictate what players on the offense and defensive players are responsible for guarding, what areas of the field defensive players are responsible for covering/protecting, and how to react with other players on the defense to what plays the offense runs. A good scheme can create opportunities for interceptions even without ballhawks or elite coverage defenders. 
+
+
+
+### Mistakes on offense
+
+Offenses also run complex play schemes. Players on the offense, especially the quarterback, must react to and try and read what schemes defenses are using before the play to try to move the ball downfield. ball catchers must run specific routes, and good catches depend on accurate throws from the quarterback as well as the receivers being at the right place in on the field at the right time. If the receiver makes a mistake and is not where the quarterback expects him to be, it's easy to quickly throw the ball to a defensive back for an easy interception. If a ball is tipped in the air by another player or the receiver bobbles the ball or drops it, that creates opportunities for interceptions. Interceptions from tipped or bobbled balls are more a product of offensive errors, making them more random. 
+
+
+
+### pash rush
+
+The players on the defensive line are trying to sack the quarterback. If players on the defensive line are beating past the offesnive line and getting in the quarterbacks face and putting them under pressure, this makes the quarterback more likely to make quick, errant throws to get the ball out to avoid sacks and losing field position. A good pass rush, when combined with good schemes for the defensive players in the back field, are more likely to create opportunities for interceptions by forcing offenses to make more mistakes. 
+
+
+
+## conclusion
+
+You noticed we didn't have any data for sacks in this analysis. All of the data presented here was gathered from ESPN, which also has data on which teams and players led the league in sacks for a given year. Using the data from EPSN, add a column to the data frame we created for how many sacks the teams that led the league in interceptions had during the regular season for each year we covered. Perform the same analysis but with team INT and team sacks and see what kind of relationship, if any, exists between the two variables. 

@@ -3,20 +3,16 @@ title: "About Me"
 ---
 
 ## Background
-
-Write a brief introduction about yourself here. Include:
-
-- Your academic background
-- Your interest in data science
-- Your career goals
-- Any relevant experience or projects
-
+    I currently doing BS in Statistics (emphasis in Data Science) at BYU. I love using data to give insights about problems that impact people and finding ways to solve them. I am especially interested in using the power of data to advocate for medical patients to get the best care available to them. I have done research, data analysis and  data visualization for the BYU office of careers and experiential learning and helped with automation for the BYU Honors department.
 ## Education
 
-- **[Your Degree]** - [University Name], [Year]
+- **BS Statistics, Data Science emphasis** - [BYU], [2026]
 - **Relevant Coursework**: Statistics, Data Analysis, Programming, etc.
 
 ## Skills & Interests
+-Advocacy / legal philosphy
+-statistical analysis
+-Organizational Work
 
 ### Technical Skills
 - **Programming**: Python
@@ -26,8 +22,10 @@ Write a brief introduction about yourself here. Include:
 - **Tools**: Jupyter Notebooks, Git/GitHub
 
 ### Areas of Interest
-- [Your specific interests, e.g., environmental data, healthcare analytics, finance, etc.]
-- [Other areas you're curious about]
+-Advocacy / legal philosphy
+-sports analysis
+-economics
+-healthcare
 
 ## Goals
 
@@ -39,9 +37,9 @@ Describe what you hope to achieve through your data science journey:
 
 ## Contact
 
-- **Email**: your.email@example.com
+- **Email**: espiller@byu.edu
 - **GitHub**: [github.com/your-username](https://github.com/your-username)
-- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- **LinkedIn**: [linkedin.com/in/elias-spiller](www.linkedin.com/in/elias-spiller-26024a344)
 
 ---
 
