@@ -244,11 +244,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#results" id="toc-results" class="nav-link active" data-scroll-target="#results">results</a>
-  <ul class="collapse">
-  <li><a href="#per-season" id="toc-per-season" class="nav-link" data-scroll-target="#per-season">Per Season</a></li>
-  <li><a href="#across-all-seasons" id="toc-across-all-seasons" class="nav-link" data-scroll-target="#across-all-seasons">Across All Seasons</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#eda-overview" id="toc-eda-overview" class="nav-link" data-scroll-target="#eda-overview">EDA overview</a></li>
   <li><a href="#further-info" id="toc-further-info" class="nav-link" data-scroll-target="#further-info">further info</a></li>
   </ul>
 </nav>
@@ -287,11 +284,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>American Football has more moving parts than almost any other sport. Offense and Defense are separate groups of players. Within each of these are four to five different kinds of players wo all have different roles on the field. Each Team has 11 on the field at a time. The sheer number of moving parts on one play, for both offense and defense is immense. Using data on team offense from the 2018 to the 2024 seasons, I wanted to investigate how Net Passing Yards per attempt (Passing NY/A) and Rushing Yards per attempt (Rushing Y/A) have changed through this period and if there is any link between these metrics. I also wanted to know how teams that make the postseason perform in these metrics compared to the other teams in the league. This data is interesting because it can capture shifts in offensive tendencies over time and give insight into the tendencies of successful offensive teams.</p>
-<p>Gathering the data was done using Pro-Football-Reference.com. This website does not allow any bot scraping for their football data according to their robots.txt but they do allow data to be downloaded for free. In order to obtain the data, I downloaded excel files for the tables I wanted. However, the data was not actually stored as an excel but as an HTML table. I used pandas to read the html from each file which I stored in all in one folder. There were 14 files total: One that contained the teams that made it to the postseason for each season, and one that had offensive data ina variety of metrics, including passing NY/A and rushing Y/A for each team in a season. I combined the offensive data all into one data set, adding columns to mark the season and which teams won a post-season game, which was taken from the postseason teams data sets for each season.</p>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">results</h2>
-<p>this table shows for a given season, according to my analysis how many of the teams that won at least one playoff game were above league average in both Passing NY/A and/or Rushing Y/A for a given season. In only one year were any teams that won at least one playoff game below average in neither metric, 2024. many teams that win playoff games are rather balanced. 2018 and 2021 are the only years where less than 50% of teams that won at least one playoff games were above league average in both metrics simultaneously.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>American Football has more moving parts than almost any other sport. Offense and Defense are separate groups of players. Within each of these are four to five different kinds of players who all have different roles on the field. Each Team has 11 on the field at a time. The sheer number of moving parts on one play, for both offense and defense, is immense. Using data on team offense from the 2018 to the 2024 seasons, I wanted to investigate how Net Passing Yards per attempt (Passing NY/A) and Rushing Yards per attempt (Rushing Y/A) have changed through this period and if there is any link between these metrics. I also wanted to know how teams that make the postseason perform in these metrics compared to the other teams in the league. This data is interesting because it can capture shifts in offensive tendencies over time and give insight into the tendencies of successful offensive teams.</p>
+<p>Gathering the data was done using Pro-Football-Reference.com. This website does not allow any bot scraping for its football data, according to their robots.txt, but they do allow data to be downloaded for free. In order to obtain the data, I downloaded Excel files for the tables I wanted. However, the data was not actually stored as an Excel but as an HTML table. I used pandas to read the HTML from each file, which I stored in one folder. There were 14 files total: One that contained the teams that made it to the postseason for each season, and one that had offensive data in a variety of metrics, including passing NY/A and rushing Y/A for each team in a season. I combined the offensive data into one data set, adding columns to mark the season and which teams won a postseason game, which was taken from the postseason teams data sets for each season.</p>
+<p>The final data set has 244 rows and 30 columns, representing various offensive metrics, including whether or not they won a playoff game, for all 32 teams from the 2018 to the 2024 season</p>
+</section>
+<section id="eda-overview" class="level3">
+<h3 class="anchored" data-anchor-id="eda-overview">EDA overview</h3>
+<p>This table shows, for a given season, according to my analysis, how many of the teams that won at least one playoff game were above league average in both Passing NY/A and Rushing Y/A for a given season, or above average in just one or neither metric. Many teams that win playoff games are rather balanced. 2018 and 2021 are the only years in which less than 50% of teams that won at least one playoff game were above league average in both metrics simultaneously. Defensive schemes tend to become more aggressive in the playoffs, so balanced teams might have an advantage since they can rely on both to generate points (rather than being vulnerable to having either the passing or rushing attack completely limited by the defense, which forces them to rely on more inefficient offense).</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -362,15 +363,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<section id="passing-vs-rushing-over-time" class="level4">
+<h4 class="anchored" data-anchor-id="passing-vs-rushing-over-time">passing vs rushing over time</h4>
 <div class="quarto-figure quarto-figure-center" style="display:block; margin:auto;">
 <figure class="figure">
 <p><img src="images/efficiency per season.png" class="img-fluid figure-img" width="500"></p>
 <figcaption>Passing NY/A and Rushing Y/A from 2018-2024</figcaption>
 </figure>
 </div>
-<p>Interestingly, both passing NY/A and rushing Y/A didn’t fluctuate much across the seven season sample. Looking at the overall and within-season standard deviations, we can confirm that neither metric varies by a significant amount.</p>
-<section id="per-season" class="level3">
-<h3 class="anchored" data-anchor-id="per-season">Per Season</h3>
+<p>Interestingly, both passing NY/A and rushing Y/A didn’t fluctuate much across the seven-season sample. Looking at the overall and within-season standard deviations, we can confirm that neither metric varies by a significant amount. This could be due to a variety of reasons. The league is constantly adjusting to limit explosive plays, whether passing or running. Even above-average season outliers tend to regress towards the mean over multiple seasons in terms of their run and pass efficiency. Thus, given the constant evolution, not just offensively but defensively, the averages don’t change much due to this constant chess match between offenses and defenses.</p>
+</section>
+<section id="per-season" class="level4">
+<h4 class="anchored" data-anchor-id="per-season">Per Season</h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 10%">
@@ -441,8 +445,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="across-all-seasons" class="level3">
-<h3 class="anchored" data-anchor-id="across-all-seasons">Across All Seasons</h3>
+<section id="across-all-seasons" class="level4">
+<h4 class="anchored" data-anchor-id="across-all-seasons">Across All Seasons</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -464,13 +468,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</section>
+<section id="passing-nya-and-rushing-ya-plotted-for-every-team-per-season" class="level4">
+<h4 class="anchored" data-anchor-id="passing-nya-and-rushing-ya-plotted-for-every-team-per-season">Passing NY/A and Rushing Y/A plotted for every team per season</h4>
 <div class="quarto-figure quarto-figure-center" style="display:block; margin:auto;">
 <figure class="figure">
 <p><img src="images/passing vs rushing per season regression plots.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Passing NY/A and Rushing Y/A from 2018-2024 plotted for each team per season</figcaption>
+<figcaption>Passing NY/A and Rushing Y/A from 2018-2024</figcaption>
 </figure>
 </div>
-<p>However, the relationship between both passing NY/A and rushing Y/A per season varies more. THis can also be seen in the scatter plots as well. Possible reasons for this could be the variance in the number of teams per season that are substantially above average in both metrics. More teams that are farther above average in both could inflate the slope of the lines in the scatterplots and the correlation coefficients, as well as some teams being outliers on how far above the aevrage they are could also inflate the correlation in a given season. ## Correlation Between Passing NY/A and Rushing Y/A</p>
+<p>However, the relationship between both passing NY/A and rushing Y/A per season varies more. This can also be seen in the scatter plots. Possible reasons for this could be the variance in the number of teams per season that are substantially above average in both metrics. More teams that are farther above average in both could inflate the slope of the lines in the scatterplots and the correlation coefficients, as well as some teams being outliers on how far above the average they are could also inflate the correlation in a given season. Except for 2024, which had an abnormal high correlation coefficient, correlation is generally low, suggesting teams may specialize in passing or rushing rather than excel at both.</p>
+</section>
+<section id="correlation-between-passing-nya-and-rushing-ya" class="level4">
+<h4 class="anchored" data-anchor-id="correlation-between-passing-nya-and-rushing-ya">Correlation Between Passing NY/A and Rushing Y/A</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -515,9 +525,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 </section>
-<section id="further-info" class="level2">
-<h2 class="anchored" data-anchor-id="further-info">further info</h2>
-<p>All data gathered from <a href="https://www.pro-football-reference.com/years">Pro Football Reference</a>. For each season the tables are found here https://www.pro-football-reference.com/years/YEAR/#team_stats and https://www.pro-football-reference.com/years/YEAR/#playoff_results, where YEAR is the actual year (insert the year you want to find into the links) All code used to process, format and analyze the data is <a href="https://github.com/espiller602/data-acquisition-files">here</a></p>
+<section id="further-info" class="level3">
+<h3 class="anchored" data-anchor-id="further-info">further info</h3>
+<p>All data gathered from <a href="https://www.pro-football-reference.com/years">Pro Football Reference</a>.</p>
+<p>For each season,the tables are found here https://www.pro-football-reference.com/years/YEAR/#team_stats and https://www.pro-football-reference.com/years/YEAR/#playoff_results, where YEAR is the actual year (insert the year you want to find into the links)</p>
+<p>All code used to process, format, and analyze the data is <a href="https://github.com/espiller602/data-acquisition-files">here</a></p>
 
 
 <!-- -->
@@ -985,70 +997,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>American Football has more moving parts than almost any other sport. Offense and Defense are separate groups of players. Within each of these are four to five different kinds of players wo all have different roles on the field. Each Team has 11 on the field at a time. The sheer number of moving parts on one play, for both offense and defense is immense. Using data on team offense from the 2018 to the 2024 seasons, I wanted to investigate how Net Passing Yards per attempt (Passing NY/A) and Rushing Yards per attempt (Rushing Y/A) have changed through this period and if there is any link between these metrics. I also wanted to know how teams that make the postseason perform in these metrics compared to the other teams in the league. This data is interesting because it can capture shifts in offensive tendencies over time and give insight into the tendencies of successful offensive teams. </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Gathering the data was done using Pro-Football-Reference.com. This website does not allow any bot scraping for their football data according to their robots.txt but they do allow data to be downloaded for free. In order to obtain the data, I downloaded excel files for the tables I wanted. However, the data was not actually stored as an excel but as an HTML table. I used pandas to read the html from each file which I stored in all in one folder. There were 14 files total: One that contained the teams that made it to the postseason for each season, and one that had offensive data ina  variety of metrics, including passing NY/A and rushing Y/A for each team in a season. I combined the offensive data all into one data set, adding columns to mark the season and which teams won a post-season game, which was taken from the postseason teams data sets for each season. </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## results</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>this table shows for a given season, according to my analysis how many of the teams that won at least one playoff game were above league average in both Passing NY/A and/or Rushing Y/A for a given season. In only one year were any teams that won at least one playoff game below average in neither metric, 2024. many teams that win playoff games are rather balanced. 2018 and 2021 are the only years where less than 50% of teams that won at least one playoff games were above league average in both metrics simultaneously. </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### Introduction</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>American Football has more moving parts than almost any other sport. Offense and Defense are separate groups of players. Within each of these are four to five different kinds of players who all have different roles on the field. Each Team has 11 on the field at a time. The sheer number of moving parts on one play, for both offense and defense, is immense. Using data on team offense from the 2018 to the 2024 seasons, I wanted to investigate how Net Passing Yards per attempt (Passing NY/A) and Rushing Yards per attempt (Rushing Y/A) have changed through this period and if there is any link between these metrics. I also wanted to know how teams that make the postseason perform in these metrics compared to the other teams in the league. This data is interesting because it can capture shifts in offensive tendencies over time and give insight into the tendencies of successful offensive teams. </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Gathering the data was done using Pro-Football-Reference.com. This website does not allow any bot scraping for its football data, according to their robots.txt, but they do allow data to be downloaded for free. In order to obtain the data, I downloaded Excel files for the tables I wanted. However, the data was not actually stored as an Excel but as an HTML table. I used pandas to read the HTML from each file, which I stored in one folder. There were 14 files total: One that contained the teams that made it to the postseason for each season, and one that had offensive data in a variety of metrics, including passing NY/A and rushing Y/A for each team in a season. I combined the offensive data into one data set, adding columns to mark the season and which teams won a postseason game, which was taken from the postseason teams data sets for each season. </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>The final data set has 244 rows and 30 columns, representing various offensive metrics, including whether or not they won a playoff game, for all 32 teams from the 2018 to the 2024 season</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Season <span class="pp">|</span> Postseason Winners <span class="pp">|</span> Both <span class="pp">|</span> Passing <span class="pp">|</span> Rushing <span class="pp">|</span> Neither <span class="pp">|</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|------------------|------|---------|---------|---------|</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2018   <span class="pp">|</span> 8                <span class="pp">|</span> 3    <span class="pp">|</span> 4       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2019   <span class="pp">|</span> 7                <span class="pp">|</span> 5    <span class="pp">|</span> 1       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2020   <span class="pp">|</span> 8                <span class="pp">|</span> 4    <span class="pp">|</span> 3       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2021   <span class="pp">|</span> 6                <span class="pp">|</span> 2    <span class="pp">|</span> 4       <span class="pp">|</span> 0       <span class="pp">|</span> 0       <span class="pp">|</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2022   <span class="pp">|</span> 8                <span class="pp">|</span> 5    <span class="pp">|</span> 2       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2023   <span class="pp">|</span> 8                <span class="pp">|</span> 6    <span class="pp">|</span> 2       <span class="pp">|</span> 0       <span class="pp">|</span> 0       <span class="pp">|</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2024   <span class="pp">|</span> 7                <span class="pp">|</span> 4    <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span> 2       <span class="pp">|</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="al">![Passing NY/A and Rushing Y/A from 2018-2024 ](images/efficiency%20per%20season.png)</span>{ width=500px style="display:block; margin:auto;" }</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Interestingly, both passing NY/A and rushing Y/A didn't fluctuate much across the seven season sample. Looking at the overall and within-season standard deviations, we can confirm that neither metric varies by a significant amount. </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### EDA overview</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>This table shows, for a given season, according to my analysis, how many of the teams that won at least one playoff game were above league average in both Passing NY/A and Rushing Y/A for a given season, or above average in just one or neither metric. Many teams that win playoff games are rather balanced. 2018 and 2021 are the only years in which less than 50% of teams that won at least one playoff game were above league average in both metrics simultaneously. Defensive schemes tend to become more aggressive in the playoffs, so balanced teams might have an advantage since they can rely on both to generate points (rather than being vulnerable to having either the passing or rushing attack completely limited by the defense, which forces them to rely on more inefficient offense).</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Season <span class="pp">|</span> Postseason Winners <span class="pp">|</span> Both <span class="pp">|</span> Passing <span class="pp">|</span> Rushing <span class="pp">|</span> Neither <span class="pp">|</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|------------------|------|---------|---------|---------|</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2018   <span class="pp">|</span> 8                <span class="pp">|</span> 3    <span class="pp">|</span> 4       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2019   <span class="pp">|</span> 7                <span class="pp">|</span> 5    <span class="pp">|</span> 1       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2020   <span class="pp">|</span> 8                <span class="pp">|</span> 4    <span class="pp">|</span> 3       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2021   <span class="pp">|</span> 6                <span class="pp">|</span> 2    <span class="pp">|</span> 4       <span class="pp">|</span> 0       <span class="pp">|</span> 0       <span class="pp">|</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2022   <span class="pp">|</span> 8                <span class="pp">|</span> 5    <span class="pp">|</span> 2       <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2023   <span class="pp">|</span> 8                <span class="pp">|</span> 6    <span class="pp">|</span> 2       <span class="pp">|</span> 0       <span class="pp">|</span> 0       <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2024   <span class="pp">|</span> 7                <span class="pp">|</span> 4    <span class="pp">|</span> 1       <span class="pp">|</span> 0       <span class="pp">|</span> 2       <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">#### passing vs rushing over time</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Per Season</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="al">![Passing NY/A and Rushing Y/A from 2018-2024 ](images/efficiency%20per%20season.png)</span>{ width=500px style="display:block; margin:auto;" }</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Season <span class="pp">|</span> Passing_NY/A Mean <span class="pp">|</span> Passing_NY/A Std <span class="pp">|</span> Rushing_Y/A Mean <span class="pp">|</span> Rushing_Y/A Std <span class="pp">|</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-----------------|----------------|-----------------|----------------|</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2018   <span class="pp">|</span> 6.400           <span class="pp">|</span> 0.792          <span class="pp">|</span> 4.419           <span class="pp">|</span> 0.342          <span class="pp">|</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2019   <span class="pp">|</span> 6.306           <span class="pp">|</span> 0.733          <span class="pp">|</span> 4.284           <span class="pp">|</span> 0.505          <span class="pp">|</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2020   <span class="pp">|</span> 6.431           <span class="pp">|</span> 0.732          <span class="pp">|</span> 4.384           <span class="pp">|</span> 0.428          <span class="pp">|</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2021   <span class="pp">|</span> 6.225           <span class="pp">|</span> 0.707          <span class="pp">|</span> 4.306           <span class="pp">|</span> 0.421          <span class="pp">|</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2022   <span class="pp">|</span> 6.116           <span class="pp">|</span> 0.643          <span class="pp">|</span> 4.434           <span class="pp">|</span> 0.450          <span class="pp">|</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2023   <span class="pp">|</span> 6.063           <span class="pp">|</span> 0.853          <span class="pp">|</span> 4.175           <span class="pp">|</span> 0.403          <span class="pp">|</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2024   <span class="pp">|</span> 6.247           <span class="pp">|</span> 0.818          <span class="pp">|</span> 4.406           <span class="pp">|</span> 0.472          <span class="pp">|</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### Across All Seasons</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Metric        <span class="pp">|</span> Mean  <span class="pp">|</span> Std   <span class="pp">|</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|-------|-------|</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Passing_NY/A  <span class="pp">|</span> 6.255 <span class="pp">|</span> 0.757 <span class="pp">|</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Rushing_Y/A   <span class="pp">|</span> 4.344 <span class="pp">|</span> 0.437 <span class="pp">|</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Interestingly, both passing NY/A and rushing Y/A didn't fluctuate much across the seven-season sample. Looking at the overall and within-season standard deviations, we can confirm that neither metric varies by a significant amount. This could be due to a variety of reasons. The league is constantly adjusting to limit explosive plays, whether passing or running. Even above-average season outliers tend to regress towards the mean over multiple seasons in terms of their run and pass efficiency. Thus, given the constant evolution, not just offensively but defensively, the averages don't change much due to this constant chess match between offenses and defenses.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Per Season</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Season <span class="pp">|</span> Passing_NY/A Mean <span class="pp">|</span> Passing_NY/A Std <span class="pp">|</span> Rushing_Y/A Mean <span class="pp">|</span> Rushing_Y/A Std <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-----------------|----------------|-----------------|----------------|</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2018   <span class="pp">|</span> 6.400           <span class="pp">|</span> 0.792          <span class="pp">|</span> 4.419           <span class="pp">|</span> 0.342          <span class="pp">|</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2019   <span class="pp">|</span> 6.306           <span class="pp">|</span> 0.733          <span class="pp">|</span> 4.284           <span class="pp">|</span> 0.505          <span class="pp">|</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2020   <span class="pp">|</span> 6.431           <span class="pp">|</span> 0.732          <span class="pp">|</span> 4.384           <span class="pp">|</span> 0.428          <span class="pp">|</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2021   <span class="pp">|</span> 6.225           <span class="pp">|</span> 0.707          <span class="pp">|</span> 4.306           <span class="pp">|</span> 0.421          <span class="pp">|</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2022   <span class="pp">|</span> 6.116           <span class="pp">|</span> 0.643          <span class="pp">|</span> 4.434           <span class="pp">|</span> 0.450          <span class="pp">|</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2023   <span class="pp">|</span> 6.063           <span class="pp">|</span> 0.853          <span class="pp">|</span> 4.175           <span class="pp">|</span> 0.403          <span class="pp">|</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2024   <span class="pp">|</span> 6.247           <span class="pp">|</span> 0.818          <span class="pp">|</span> 4.406           <span class="pp">|</span> 0.472          <span class="pp">|</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="al">![Passing NY/A and Rushing Y/A from 2018-2024 plotted for each team per season](images/passing%20vs%20rushing%20per%20season%20regression%20plots.png)</span>{ width=500px style="display:block; margin:auto;" }</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a> However, the relationship between both passing NY/A and rushing Y/A per season varies more. THis can also be seen in the scatter plots as well. Possible reasons for this could be the variance in the number of teams per season that are substantially above average in both metrics. More teams that are farther above average in both could inflate the slope of the lines in the scatterplots and the correlation coefficients, as well as some teams being outliers on how far above the aevrage they are could also inflate the correlation in a given season. </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a> ## Correlation Between Passing NY/A and Rushing Y/A</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Season <span class="pp">|</span> Correlation <span class="pp">|</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|------------|</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Overall <span class="pp">|</span> 0.28      <span class="pp">|</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2018    <span class="pp">|</span> 0.23      <span class="pp">|</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2019    <span class="pp">|</span> 0.27      <span class="pp">|</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2020    <span class="pp">|</span> 0.15      <span class="pp">|</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2021    <span class="pp">|</span> 0.13      <span class="pp">|</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2022    <span class="pp">|</span> 0.15      <span class="pp">|</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2023    <span class="pp">|</span> 0.33      <span class="pp">|</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2024    <span class="pp">|</span> 0.58      <span class="pp">|</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## further info</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>All data gathered from <span class="co">[</span><span class="ot">Pro Football Reference</span><span class="co">](https://www.pro-football-reference.com/years)</span>. For each season the tables are found here https://www.pro-football-reference.com/years/YEAR/#team_stats and https://www.pro-football-reference.com/years/YEAR/#playoff_results, where YEAR is the actual year (insert the year you want to find into the links)</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>All code used to process, format and analyze the data is <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/espiller602/data-acquisition-files)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Across All Seasons</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Metric        <span class="pp">|</span> Mean  <span class="pp">|</span> Std   <span class="pp">|</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|-------|-------|</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Passing_NY/A  <span class="pp">|</span> 6.255 <span class="pp">|</span> 0.757 <span class="pp">|</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Rushing_Y/A   <span class="pp">|</span> 4.344 <span class="pp">|</span> 0.437 <span class="pp">|</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Passing NY/A and Rushing Y/A plotted for every team per season</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="al">![Passing NY/A and Rushing Y/A from 2018-2024](images/passing%20vs%20rushing%20per%20season%20regression%20plots.png)</span>{ width=500px style="display:block; margin:auto;" }</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>However, the relationship between both passing NY/A and rushing Y/A per season varies more. This can also be seen in the scatter plots. Possible reasons for this could be the variance in the number of teams per season that are substantially above average in both metrics. More teams that are farther above average in both could inflate the slope of the lines in the scatterplots and the correlation coefficients, as well as some teams being outliers on how far above the average they are could also inflate the correlation in a given season. Except for 2024, which had an abnormal high correlation coefficient, correlation is generally low, suggesting teams may specialize in passing or rushing rather than excel at both.</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Correlation Between Passing NY/A and Rushing Y/A</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Season  <span class="pp">|</span> Correlation <span class="pp">|</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------|------------|</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Overall <span class="pp">|</span> 0.28       <span class="pp">|</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2018    <span class="pp">|</span> 0.23       <span class="pp">|</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2019    <span class="pp">|</span> 0.27       <span class="pp">|</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2020    <span class="pp">|</span> 0.15       <span class="pp">|</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2021    <span class="pp">|</span> 0.13       <span class="pp">|</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2022    <span class="pp">|</span> 0.15       <span class="pp">|</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2023    <span class="pp">|</span> 0.33       <span class="pp">|</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2024    <span class="pp">|</span> 0.58       <span class="pp">|</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### further info</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>All data gathered from <span class="co">[</span><span class="ot">Pro Football Reference</span><span class="co">](https://www.pro-football-reference.com/years)</span>. </span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>For each season,the tables are found here https://www.pro-football-reference.com/years/YEAR/#team_stats and https://www.pro-football-reference.com/years/YEAR/#playoff_results, where YEAR is the actual year (insert the year you want to find into the links)</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>All code used to process, format, and analyze the data is <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/espiller602/data-acquisition-files)</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
