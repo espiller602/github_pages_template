@@ -144,7 +144,7 @@
     "href": "projects/data-acquisition.html",
     "title": "Data Acquisition Project",
     "section": "",
-    "text": "This is coming down the pipeline. Check again later.",
+    "text": "American Football has more moving parts than almost any other sport. Offense and Defense are separate groups of players. Within each of these are four to five different kinds of players wo all have different roles on the field. Each Team has 11 on the field at a time. The sheer number of moving parts on one play, for both offense and defense is immense. Using data on team offense from the 2018 to the 2024 seasons, I wanted to investigate how Net Passing Yards per attempt (Passing NY/A) and Rushing Yards per attempt (Rushing Y/A) have changed through this period and if there is any link between these metrics. I also wanted to know how teams that make the postseason perform in these metrics compared to the other teams in the league. This data is interesting because it can capture shifts in offensive tendencies over time and give insight into what it takes to be a successful team offensively in the NFL.\nGathering the data was done using Pro-Football-Reference.com. This website does not allow any bot scraping for their football data according to their robots.txt but they do allow data to be downloaded for free. In order to obtain the data, I downloaded excel files for the tables I wanted. However, the data was not actually stored as an excel but as an HTML table. I used pandaas to read the html from each file which I stored in all in one folder. There were 14 files total: One that contained the teams that made it to the postseason for each season, and one that had offensive data ina variety of metrics, inlcuding passing NY/A and rushing Y/A for each team in a season. I combined the offensive data all into one data set, adding columns to mark the season and which teams won a post-season game, which was taken from the postseason teams data sets for each season.",
     "crumbs": [
       "Data Acquisition Project"
     ]
@@ -157,6 +157,16 @@
     "text": "This is coming down the pipeline. Check again later.",
     "crumbs": [
       "Final Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#conclusions",
+    "href": "projects/data-acquisition.html#conclusions",
+    "title": "Data Acquisition Project",
+    "section": "conclusions",
+    "text": "conclusions",
+    "crumbs": [
+      "Data Acquisition Project"
     ]
   }
 ]
